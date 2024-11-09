@@ -29,7 +29,7 @@ export function startServer() {
     });
   });
 
-  app.use(router);
+  app.use('/contacts', router);
 
   app.use('*', notFoundHandler);
 
