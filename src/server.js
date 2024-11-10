@@ -3,9 +3,11 @@ import pino from 'pino-http';
 import cors from 'cors';
 
 import { env } from './utils/env.js';
-import router from './routers/contacts.js';
+import router from './routers/index.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { ErrorHandler } from './middlewares/errorHandler.js';
+
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -14,6 +16,7 @@ export function startServer() {
 
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
   app.use(
     pino({
@@ -29,7 +32,7 @@ export function startServer() {
     });
   });
 
-  app.use('/contacts', router);
+  app.use(router);
 
   app.use('*', notFoundHandler);
 
