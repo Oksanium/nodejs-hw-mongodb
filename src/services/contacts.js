@@ -39,24 +39,6 @@ export const getAllContacts = async ({
   };
 };
 
-//   const contactsCount = await ContactsCollection.find()
-//     .merge(contactsQuery)
-//     .countDocuments();
-
-//   const contacts = await contactsQuery
-//     .skip(skip)
-//     .limit(limit)
-//     .sort({ [sortBy]: sortOrder })
-//     .exec();
-
-//   const paginationData = calculatePaginationData(contactsCount, perPage, page);
-
-//   return {
-//     data: contacts,
-//     ...paginationData,
-//   };
-// };
-
 export const getContactById = async (contactId) => {
   const contact = await ContactsCollection.findById(contactId);
   return contact;
